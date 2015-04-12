@@ -13,8 +13,8 @@ let Task = React.createClass({
     };
   },
 
-  handleToggle(task) {
-    ActionCreator.completeTask(task);
+  onToggleComplete(task) {
+    ActionCreator.toggleComplete(task);
   },
 
   render() {
@@ -22,7 +22,7 @@ let Task = React.createClass({
     return (
       <ListGroupItem>
         <Input type="checkbox" ref="checkbox" checked={task.completed}
-          onChange={this.handleToggle.bind(this, task)} label={task.title} />
+          onChange={this.onToggleComplete.bind(this, task)} label={task.title} />
       </ListGroupItem>
     );
   }

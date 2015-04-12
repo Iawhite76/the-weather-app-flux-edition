@@ -16,11 +16,18 @@ module.exports = {
     console.warn('clearList action not yet implemented...');
   },
 
-  completeTask: function(task) {
-    AppDispatcher.handleViewAction({
-      type: Constants.ActionTypes.COMPLETE_TASK,
-      task: task
-    });
+  toggleComplete: function(task) {
+    if (task.completed) {
+      AppDispatcher.handleViewAction({
+        type: Constants.ActionTypes.TASK_UNDO_COMPLETE,
+        task: task
+      });
+    } else {
+      AppDispatcher.handleViewAction({
+        type: Constants.ActionTypes.TASK_COMPLETE,
+        task: task
+      });
+    }
   }
 
 };
