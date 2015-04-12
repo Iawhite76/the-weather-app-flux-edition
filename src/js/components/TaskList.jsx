@@ -21,17 +21,15 @@ let TaskList = React.createClass({
       );
     }
 
-    let tasksArray = [];
-    for (let aTask in tasks) {
-      tasksArray.push(tasks[aTask]);
+    let allTasks = [];
+    for (let key in tasks) {
+      allTasks.push(<Task key={key}  task={tasks[key]} />);
     }
 
     return (
       <form>
         <ListGroup>
-          {tasksArray.map(task =>
-            <Task task={task} />
-          )}
+          {allTasks}
         </ListGroup>
       </form>
     );
