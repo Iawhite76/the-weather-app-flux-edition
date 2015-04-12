@@ -25,7 +25,7 @@ let Task = React.createClass({
   render() {
     let {task} = this.props;
     return (
-      <ListGroupItem>
+      <ListGroupItem className="task">
         <Input type="checkbox" ref="checkbox" checked={task.completed}
           onChange={this.onToggleComplete.bind(this, task)} label={task.title} />
           <Button bsStyle='danger' className='remove_task' onClick={this.removetask.bind(this, task)}>Remove Task</Button>
