@@ -16,6 +16,10 @@ function update(id, updates) {
   console.log(_data);
 }
 
+function destroy(id) {
+  delete _data[id];
+}
+
 // Facebook style store creation.
 let TodoStore = assign({}, BaseStore, {
 
@@ -49,6 +53,11 @@ let TodoStore = assign({}, BaseStore, {
 
       case Constants.ActionTypes.TASK_COMPLETE:
         update(task.id, {completed: true});
+        TodoStore.emitChange();
+        break;
+
+      case Constants.ActionTypes.REMOVE_TASK:
+        destroy(task.id);
         TodoStore.emitChange();
         break;
 

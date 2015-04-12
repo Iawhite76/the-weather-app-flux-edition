@@ -28,6 +28,13 @@ module.exports = {
         task: task
       });
     }
+  },
+
+  removeTask: function(task) {
+    AppDispatcher.handleViewAction({
+      type: Constants.ActionTypes.REMOVE_TASK,
+      task: task
+    })
   }
 
 };

@@ -6,7 +6,8 @@ module.exports = {
     ADD_TASK: null,
     COMPLETE_TASK: null,
     TASK_COMPLETE: null,
-    TASK_UNDO_COMPLETE: null
+    TASK_UNDO_COMPLETE: null,
+    REMOVE_TASK: null
   }),
 
   ActionSources: keyMirror({
