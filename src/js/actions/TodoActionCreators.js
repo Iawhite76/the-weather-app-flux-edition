@@ -3,10 +3,11 @@ var Constants = require('../constants/AppConstants');
 
 module.exports = {
 
-  addItem: function(text) {
+  addItem: function(itemObject) {
     AppDispatcher.handleViewAction({
       type: Constants.ActionTypes.ADD_TASK,
-      text: text
+      title: itemObject.title,
+      id: itemObject.id
     });
   },
 
@@ -15,7 +16,10 @@ module.exports = {
   },
 
   completeTask: function(task) {
-    console.warn('completeTask action not yet implemented...');
+    AppDispatcher.handleViewAction({
+      type: Constants.ActionTypes.COMPLETE_TASK,
+      task: task
+    });
   }
 
 };

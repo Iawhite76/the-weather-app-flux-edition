@@ -4,11 +4,12 @@ const BaseStore = require('./BaseStore');
 const assign = require('object-assign');
 
 // data storage
-let _data = [];
+let _data = {};
 
 // add private functions to modify data
-function addItem(title, completed=false) {
-  _data.push({title, completed});
+function addItem(title, id) {
+  // _data.push({title, completed});
+  console.log(`${title} and ${id}`);
 }
 
 // Facebook style store creation.
@@ -27,15 +28,21 @@ let TodoStore = assign({}, BaseStore, {
 
     switch(action.type) {
       case Constants.ActionTypes.ADD_TASK:
-        let text = action.text.trim();
+        let title = action.title.trim();
+        let id = action.id;
+        console.log(id);
         // NOTE: if this action needs to wait on another store:
         // AppDispatcher.waitFor([OtherStore.dispatchToken]);
         // For details, see: http://facebook.github.io/react/blog/2014/07/30/flux-actions-and-the-dispatcher.html#why-we-need-a-dispatcher
-        if (text !== '') {
-          addItem(text);
+        if (title !== '') {
+          addItem(title, id);
           TodoStore.emitChange();
         }
         break;
+
+      case Constants.ActionTypes.COMPLETE_TASK:
+        let task = action.task;
+        console.log(task)
 
       // add more cases for other actionTypes...
     }

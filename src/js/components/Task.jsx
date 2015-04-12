@@ -7,6 +7,7 @@ let Task = React.createClass({
   getDefaultProps() {
     return {
       task: {
+        id: Date.now(),
         title: '',
         completed: false
       }
@@ -14,7 +15,7 @@ let Task = React.createClass({
   },
 
   handleToggle(task) {
-    if (this.refs.checkbox.getDOMNode().checked) {
+    if (!this.refs.checkbox.getDOMNode().checked) {
       ActionCreator.completeTask(task);
     }
   },

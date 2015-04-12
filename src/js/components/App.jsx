@@ -28,7 +28,8 @@ let App = React.createClass({
   handleAddNewClick(e) {
     let title = prompt('Enter task title:');
     if (title) {
-      ActionCreator.addItem(title);
+      let id = Date.now();
+      ActionCreator.addItem({title: title, id: id, completed: false});
     }
   },
 
