@@ -10,8 +10,12 @@ let _data = {};
 function addItem(task) {
   // _data.push({title, completed});
   // console.log(`${title} and ${id}`);
-  _data[task.id] = {title: task.title, completed: task.completed};
+  _data[task.id] = {id: task.id, title: task.title, completed: task.completed};
   // console.log(_data);
+}
+
+function toggleCompleted(taskId) {
+  _data[taskId]['completed'] !== true ? _data[taskId]['completed'] = true : _data[taskId]['completed'] = false;
 }
 
 // Facebook style store creation.
@@ -27,12 +31,12 @@ let TodoStore = assign({}, BaseStore, {
   // register store with dispatcher, allowing actions to flow through
   dispatcherIndex: AppDispatcher.register(function(payload) {
     let action = payload.action;
+    let task = action.task;
 
     switch(action.type) {
       case Constants.ActionTypes.ADD_TASK:
         // let title = action.title.trim();
         // let id = action.id;
-        let task = action.task;
         // NOTE: if this action needs to wait on another store:
         // AppDispatcher.waitFor([OtherStore.dispatchToken]);
         // For details, see: http://facebook.github.io/react/blog/2014/07/30/flux-actions-and-the-dispatcher.html#why-we-need-a-dispatcher
@@ -42,9 +46,10 @@ let TodoStore = assign({}, BaseStore, {
         }
         break;
 
-      // case Constants.ActionTypes.COMPLETE_TASK:
-      //   let task = action.task;
-      //   console.log(task)
+      case Constants.ActionTypes.COMPLETE_TASK:
+        toggleCompleted(task.id)
+        TodoStore.emitChange();
+        break;
 
       // add more cases for other actionTypes...
     }

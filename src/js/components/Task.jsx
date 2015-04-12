@@ -14,9 +14,7 @@ let Task = React.createClass({
   },
 
   handleToggle(task) {
-    if (!this.refs.checkbox.getDOMNode().checked) {
-      ActionCreator.completeTask(task);
-    }
+    ActionCreator.completeTask(task);
   },
 
   render() {
