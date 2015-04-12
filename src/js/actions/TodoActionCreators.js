@@ -3,11 +3,12 @@ var Constants = require('../constants/AppConstants');
 
 module.exports = {
 
-  addItem: function(itemObject) {
+  addItem: function(task) {
     AppDispatcher.handleViewAction({
       type: Constants.ActionTypes.ADD_TASK,
-      title: itemObject.title,
-      id: itemObject.id
+      // title: itemObject.title,
+      // id: itemObject.id
+      task: task
     });
   },
 

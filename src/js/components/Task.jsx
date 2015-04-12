@@ -7,7 +7,6 @@ let Task = React.createClass({
   getDefaultProps() {
     return {
       task: {
-        id: Date.now(),
         title: '',
         completed: false
       }
