@@ -7,7 +7,8 @@ module.exports = {
     COMPLETE_TASK: null,
     TASK_COMPLETE: null,
     TASK_UNDO_COMPLETE: null,
-    REMOVE_TASK: null
+    REMOVE_TASK: null,
+    CLEAR_TASK_LIST: null
   }),
 
   ActionSources: keyMirror({

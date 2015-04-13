@@ -16,6 +16,12 @@ function update(id, updates) {
   console.log(_data);
 }
 
+function updateAll(updates) {
+  for (var key in _data) {
+    if (_data[key].completed === true) delete _data[key];
+  }
+}
+
 function destroy(id) {
   delete _data[id];
 }
@@ -58,6 +64,11 @@ let TodoStore = assign({}, BaseStore, {
 
       case Constants.ActionTypes.REMOVE_TASK:
         destroy(task.id);
+        TodoStore.emitChange();
+        break;
+
+      case Constants.ActionTypes.CLEAR_TASK_LIST:
+        updateAll({completed: true});
         TodoStore.emitChange();
         break;
 
