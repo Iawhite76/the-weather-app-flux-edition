@@ -13,7 +13,6 @@ function addItem(task) {
 
 function update(id, updates) {
   _data[id] = assign({}, _data[id], updates);
-  console.log(_data);
 }
 
 function updateAll(updates) {
