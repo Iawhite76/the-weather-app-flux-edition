@@ -1,4 +1,4 @@
-var keyMirror = require('keymirror');
+var keyMirror = require('react/lib/keyMirror');
 
 var APIRoot = "http://localhost:3000";
 
