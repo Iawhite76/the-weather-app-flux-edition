@@ -1,19 +1,34 @@
-const keyMirror = require('react/lib/keyMirror');
+var keyMirror = require('keymirror');
+
+var APIRoot = "http://localhost:3000";
 
 module.exports = {
 
-  ActionTypes: keyMirror({
-    ADD_TASK: null,
-    COMPLETE_TASK: null,
-    TASK_COMPLETE: null,
-    TASK_UNDO_COMPLETE: null,
-    REMOVE_TASK: null,
-    CLEAR_TASK_LIST: null
-  }),
+  APIEndpoints: {
+    LOGIN:          APIRoot + "/v1/login",
+    REGISTRATION:   APIRoot + "/v1/users",
+    STORIES:        APIRoot + "/v1/stories"
+  },
 
-  ActionSources: keyMirror({
+  PayloadSources: keyMirror({
     SERVER_ACTION: null,
     VIEW_ACTION: null
+  }),
+
+  ActionTypes: keyMirror({
+    // Session
+    LOGIN_REQUEST: null,
+    LOGIN_RESPONSE: null,
+
+    // Routes
+    REDIRECT: null,
+
+    LOAD_STORIES: null,
+    RECEIVE_STORIES: null,
+    LOAD_STORY: null,
+    RECEIVE_STORY: null,
+    CREATE_STORY: null,
+    RECEIVE_CREATED_STORY: null
   })
 
 };
