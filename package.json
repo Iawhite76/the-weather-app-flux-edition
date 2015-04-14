@@ -13,6 +13,7 @@
     "gulp-stylus": "^2.0.1",
     "gulp-util": "^3.0.4",
     "lost-grid": "^5.1.4",
+    "react-router": "^0.13.2",
     "reactify": "^1.1.0",
     "require-dir": "^0.3.0",
     "stylus": "^0.50.0",
@@ -41,6 +42,8 @@
     "flux": "^2.0.1",
     "object-assign": "^2.0.0",
     "react": "^0.13.1",
-    "react-bootstrap": "^0.20.3"
+    "react-bootstrap": "^0.20.3",
+    "superagent": "^0.21.0",
+    "timeago": "^0.2.0"
   }
 }
