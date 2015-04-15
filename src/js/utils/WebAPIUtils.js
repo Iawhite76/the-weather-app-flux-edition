@@ -1,10 +1,11 @@
-var ServerActionCreators = require('../actions/ServerActionCreators.react.jsx');
-var SmallConstants = require('../constants/SmallConstants.js');
-var request = require('superagent');
+const ServerActionCreators = require('../actions/ServerActionCreators.react.jsx');
+const SmallConstants = require('../constants/SmallConstants.js');
+const request = require('superagent');
 
 function _getErrors(res) {
-  var errorMsgs = ["Something went wrong, please try again"];
-  if ((json = JSON.parse(res.text))) {
+  let errorMsgs = ["Something went wrong, please try again"];
+  let json = JSON.parse(res.text);
+  if ((json)) {
     if (json['errors']) {
       errorMsgs = json['errors'];
     } else if (json['error']) {
@@ -14,7 +15,7 @@ function _getErrors(res) {
   return errorMsgs;
 }
 
-var APIEndpoints = SmallConstants.APIEndpoints;
+const APIEndpoints = SmallConstants.APIEndpoints;
 
 module.exports = {
 
@@ -30,10 +31,10 @@ module.exports = {
       .end(function(error, res) {
         if (res) {
           if (res.error) {
-            var errorMsgs = _getErrors(res);
+            let errorMsgs = _getErrors(res);
             ServerActionCreators.receiveLogin(null, errorMsgs);
           } else {
-            json = JSON.parse(res.text);
+            let json = JSON.parse(res.text);
             ServerActionCreators.receiveLogin(json, null);
           }
         }
@@ -47,10 +48,10 @@ module.exports = {
       .end(function(error, res){
         if (res) {
           if (res.error) {
-            var errorMsgs = _getErrors(res);
+            let errorMsgs = _getErrors(res);
             ServerActionCreators.receiveLogin(null, errorMsgs);
           } else {
-            json = JSON.parse(res.text);
+            let json = JSON.parse(res.text);
             ServerActionCreators.receiveLogin(json, null);
           }
         }
@@ -63,7 +64,7 @@ module.exports = {
       .set('Authorization', sessionStorage.getItem('accessToken'))
       .end(function(error, res){
         if (res) {
-          json = JSON.parse(res.text);
+          let json = JSON.parse(res.text);
           ServerActionCreators.receiveStories(json);
         }
       });
@@ -75,7 +76,7 @@ module.exports = {
       .set('Authorization', sessionStorage.getItem('accessToken'))
       .end(function(error, res){
         if (res) {
-          json = JSON.parse(res.text);
+          let json = JSON.parse(res.text);
           ServerActionCreators.receiveStory(json);
         }
       });
@@ -89,10 +90,10 @@ module.exports = {
       .end(function(error, res){
         if (res) {
           if (res.error) {
-            var errorMsgs = _getErrors(res);
+            let errorMsgs = _getErrors(res);
             ServerActionCreators.receiveCreatedStory(null, errorMsgs);
           } else {
-            json = JSON.parse(res.text);
+            let json = JSON.parse(res.text);
             ServerActionCreators.receiveCreatedStory(json, null);
           }
         }
