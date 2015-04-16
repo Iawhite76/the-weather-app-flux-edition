@@ -1,8 +1,8 @@
-var React = require('react');
-var RouteHandler = require('react-router').RouteHandler;
-var Header = require('../components/Header.react.jsx');
-var SessionStore = require('../stores/SessionStore.react.jsx');
-var RouteStore = require('../stores/RouteStore.react.jsx');
+const React = require('react'),
+      RouteHandler = require('react-router').RouteHandler,
+      Header = require('../components/Header.react.jsx'),
+      SessionStore = require('../stores/SessionStore.react.jsx'),
+      RouteStore = require('../stores/RouteStore.react.jsx');
 
 function getStateFromStores() {
   return {
@@ -13,23 +13,23 @@ function getStateFromStores() {
 
 var SmallApp = React.createClass({
 
-  getInitialState: function() {
+  getInitialState() {
     return getStateFromStores();
   },
 
-  componentDidMount: function() {
+  componentDidMount() {
     SessionStore.addChangeListener(this._onChange);
   },
 
-  componentWillUnmount: function() {
+  componentWillUnmount() {
     SessionStore.removeChangeListener(this._onChange);
   },
 
-  _onChange: function() {
+  _onChange() {
     this.setState(getStateFromStores());
   },
 
-  render: function() {
+  render() {
     return (
       <div className="app">
         <Header

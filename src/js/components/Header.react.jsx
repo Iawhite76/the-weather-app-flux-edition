@@ -1,10 +1,15 @@
-var React = require('react');
-var Router = require('react-router');
-var Link = Router.Link;
-var ReactPropTypes = React.PropTypes;
-var SessionActionCreators = require('../actions/SessionActionCreators.react.jsx');
+const React = require('react'),
+      Router = require('react-router'),
+      Link = Router.Link,
+      ReactPropTypes = React.PropTypes,
+      Nav = require('react-bootstrap').Nav,
+      Navbar = require('react-bootstrap').Navbar,
+      NavItem = require('react-bootstrap').NavItem,
+      MenuItem = require('react-bootstrap').MenuItem,
+      DropdownButton = require('react-bootstrap').DropdownButton,
+      SessionActionCreators = require('../actions/SessionActionCreators.react.jsx');
 
-var Header = React.createClass({
+let Header = React.createClass({
 
   propTypes: {
     isLoggedIn: ReactPropTypes.bool,
@@ -17,44 +22,32 @@ var Header = React.createClass({
   },
 
   render: function() {
-    var rightNav = this.props.isLoggedIn ? (
-      <ul className="right">
-        <li className="has-dropdown">
-          <a href="#">{this.props.email}</a>
-          <ul className="dropdown">
-            <li><a href='#' onClick={this.logout}>Logout</a></li>
-          </ul>
-        </li>
-      </ul>
-    ) : (
-      <ul className="right">
-        <li><Link to="login">Login</Link></li>
-        <li><Link to="signup">Sign up</Link></li>
-      </ul>
-    );
 
-    var leftNav = this.props.isLoggedIn ? (
-      <ul className="left">
-        <li><Link to="new-story">New story</Link></li>
-      </ul>
+    let rightNav = this.props.isLoggedIn ? (
+      <Nav>
+
+        <DropdownButton eventKey={1} title={this.props.email}>
+          <MenuItem eventKey='1' href='#' onClick={this.logout}>Logout</MenuItem>
+        </DropdownButton>
+
+        <NavItem eventKey='2' href='#/story/new'>New Story</NavItem>
+
+      </Nav>
     ) : (
-      <div></div>
-    );
+      <Nav>
+
+        <NavItem eventKey={1} href='#/login'>Login</NavItem>
+        <NavItem eventKey={2} href='#/signup'>Sign up</NavItem>
+
+      </Nav>
+      );
 
     return (
-      <nav className="top-bar" data-topbar role="navigation">
-        <ul className="title-area">
-          <li className="name">
-            <h1><a href="#"><strong>S</strong></a></h1>
-          </li>
-          <li className="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-        </ul>
-
-        <section className="top-bar-section">
-          {rightNav}
-          {leftNav}
-        </section>
-      </nav>
+      
+      <Navbar brand='The Weather App'>
+        {rightNav}
+      </Navbar>
+     
     );
   }
 });
