@@ -16,12 +16,12 @@ let Header = React.createClass({
     email: ReactPropTypes.string
   },
 
-  logout: function(e) {
+  logout(e) {
     e.preventDefault();
     SessionActionCreators.logout();
   },
 
-  render: function() {
+  render() {
 
     let rightNav = this.props.isLoggedIn ? (
       <Nav>
