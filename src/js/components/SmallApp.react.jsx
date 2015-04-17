@@ -2,7 +2,8 @@ const React = require('react'),
       RouteHandler = require('react-router').RouteHandler,
       Header = require('../components/Header.react.jsx'),
       SessionStore = require('../stores/SessionStore.react.jsx'),
-      RouteStore = require('../stores/RouteStore.react.jsx');
+      RouteStore = require('../stores/RouteStore.react.jsx'),
+      Row = require('react-bootstrap').Row;
 
 function getStateFromStores() {
   return {
@@ -35,7 +36,11 @@ var SmallApp = React.createClass({
         <Header
           isLoggedIn={this.state.isLoggedIn}
           email={this.state.email} />
-        <RouteHandler/>
+        <div className='container'>
+          <Row>
+            <RouteHandler/>
+          </Row>
+        </div>
       </div>
     );
   }

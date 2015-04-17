@@ -1,12 +1,16 @@
-var React = require('react');
-var SmallAppDispatcher = require('../../dispatcher/SmallAppDispatcher.js');
-var SmallConstants = require('../../constants/SmallConstants.js');
-var WebAPIUtils = require('../../utils/WebAPIUtils.js');
-var SessionStore = require('../../stores/SessionStore.react.jsx');
-var StoryActionCreators = require('../../actions/StoryActionCreators.react.jsx');
-var RouteActionCreators = require('../../actions/RouteActionCreators.react.jsx');
+const React = require('react'),
+      SmallAppDispatcher = require('../../dispatcher/SmallAppDispatcher.js'),
+      SmallConstants = require('../../constants/SmallConstants.js'),
+      WebAPIUtils = require('../../utils/WebAPIUtils.js'),
+      SessionStore = require('../../stores/SessionStore.react.jsx'),
+      StoryActionCreators = require('../../actions/StoryActionCreators.react.jsx'),
+      RouteActionCreators = require('../../actions/RouteActionCreators.react.jsx'),
+      Row = require('react-bootstrap').Row,
+      Col = require('react-bootstrap').Col,
+      Input = require('react-bootstrap').Input,
+      Button = require('react-bootstrap').Button;
 
-var StoryNew = React.createClass({
+let StoryNew = React.createClass({
 
   componentDidMount: function() {
     if (!SessionStore.isLoggedIn()) {
@@ -16,26 +20,22 @@ var StoryNew = React.createClass({
 
   _onSubmit: function(e) {
     e.preventDefault();
-    var title = this.refs.title.getDOMNode().value;
-    var body = this.refs.body.getDOMNode().value;
+    var title = this.refs.title.getInputDOMNode().value;
+    var body = this.refs.body.getInputDOMNode().value;
     StoryActionCreators.createStory(title, body);
   },
 
   render: function() {
     return (
-      <div className="row">
-        <form onSubmit={this._onSubmit} className="new-story">
-          <div className="new-story__title">
-            <input type="text" placeholder="Title" name="title" ref="title" />
-          </div>
-          <div className="new-story__body">
-            <textarea rows="10" placeholder="Your story..." name="body" ref="body" />
-          </div>
-          <div className="new-story__submit">
-            <button type="submit">Create</button>
-          </div>
+      <Row>
+        <Col xs={6} xsOffset={3}>
+         <form className='form-horizontal' onSubmit={this._onSubmit}>
+           <Input type='text' placeholder="Title" name="title" ref="title" />
+           <Input type='textarea' rows="10" placeholder="Your story..." name="body" ref="body" />
+           <Button type='submit'>Create</Button>
          </form>
-       </div>
+        </Col>
+      </Row>
      );
   }
 
