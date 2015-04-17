@@ -27,15 +27,13 @@ let StoryNew = React.createClass({
 
   render: function() {
     return (
-      <Row>
-        <Col xs={6} xsOffset={3}>
-         <form className='form-horizontal' onSubmit={this._onSubmit}>
-           <Input type='text' placeholder="Title" name="title" ref="title" />
-           <Input type='textarea' rows="10" placeholder="Your story..." name="body" ref="body" />
-           <Button type='submit'>Create</Button>
-         </form>
-        </Col>
-      </Row>
+      <Col xs={12}>
+       <form className='form-horizontal' onSubmit={this._onSubmit}>
+         <Input type='text' placeholder="Title" name="title" ref="title" />
+         <Input type='textarea' rows="10" placeholder="Your story..." name="body" ref="body" />
+         <Button type='submit'>Create</Button>
+       </form>
+      </Col>
      );
   }
 
