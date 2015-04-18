@@ -8,25 +8,25 @@ const React = require('react'),
       Input = Rbs.Input,
       Button = Rbs.Button;
 
-var LoginPage = React.createClass({
+let LoginPage = React.createClass({
 
-  getInitialState: function() {
+  getInitialState() {
     return { errors: [] };
   },
 
-  componentDidMount: function() {
+  componentDidMount() {
     SessionStore.addChangeListener(this._onChange);
   },
 
-  componentWillUnmount: function() {
+  componentWillUnmount() {
     SessionStore.removeChangeListener(this._onChange);
   },
 
-  _onChange: function() {
+  _onChange() {
     this.setState({ errors: SessionStore.getErrors() });
   },
 
-  _onSubmit: function(e) {
+  _onSubmit(e) {
     e.preventDefault();
     this.setState({ errors: [] });
     var email = this.refs.email.getInputDOMNode().value;
@@ -34,8 +34,8 @@ var LoginPage = React.createClass({
     SessionActionCreators.login(email, password);
   },
 
-  render: function() {
-    var errors = (this.state.errors.length > 0) ? <ErrorNotice errors={this.state.errors}/> : <div></div>;
+  render() {
+    let errors = (this.state.errors.length > 0) ? <ErrorNotice errors={this.state.errors}/> : <div></div>;
     return (
       <div>
         {errors}

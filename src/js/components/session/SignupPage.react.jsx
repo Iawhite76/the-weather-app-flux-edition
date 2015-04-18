@@ -8,31 +8,31 @@ const  React = require('react'),
        Input = Rbs.Input,
        Button = Rbs.Button;
 
-var SignupPage = React.createClass({
+let SignupPage = React.createClass({
 
-  getInitialState: function() {
+  getInitialState() {
     return { errors: [] };
   },
 
-  componentDidMount: function() {
+  componentDidMount() {
     SessionStore.addChangeListener(this._onChange);
   },
 
-  componentWillUnmount: function() {
+  componentWillUnmount() {
     SessionStore.removeChangeListener(this._onChange);
   },
 
-  _onChange: function() {
+  _onChange() {
     this.setState({ errors: SessionStore.getErrors() });
   },
 
-  _onSubmit: function(e) {
+  _onSubmit(e) {
     e.preventDefault();
     this.setState({ errors: [] });
-    var email = this.refs.email.getInputDOMNode().value;
-    var username = this.refs.username.getInputDOMNode().value;
-    var password = this.refs.password.getInputDOMNode().value;
-    var passwordConfirmation = this.refs.passwordConfirmation.getInputDOMNode().value;
+    let email = this.refs.email.getInputDOMNode().value,
+        username = this.refs.username.getInputDOMNode().value,
+        password = this.refs.password.getInputDOMNode().value,
+        passwordConfirmation = this.refs.passwordConfirmation.getInputDOMNode().value;
     if (password !== passwordConfirmation) {
       this.setState({ errors: ['Password and password confirmation should match']});
     } else {
@@ -40,8 +40,8 @@ var SignupPage = React.createClass({
     }
   },
 
-  render: function() {
-    var errors = (this.state.errors.length > 0) ? <ErrorNotice errors={this.state.errors}/> : <div></div>;
+  render() {
+    let errors = (this.state.errors.length > 0) ? <ErrorNotice errors={this.state.errors}/> : <div></div>;
     return (
       <div>
         {errors}

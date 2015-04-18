@@ -13,21 +13,21 @@ const React = require('react'),
 
 let StoryNew = React.createClass({
 
-  componentDidMount: function() {
+  componentDidMount() {
     if (!SessionStore.isLoggedIn()) {
       alert('you must sign in first');
       RouteActionCreators.redirect('app');
     }
   },
 
-  _onSubmit: function(e) {
+  _onSubmit(e) {
     e.preventDefault();
-    var title = this.refs.title.getInputDOMNode().value;
-    var body = this.refs.body.getInputDOMNode().value;
+    let title = this.refs.title.getInputDOMNode().value;
+    let body = this.refs.body.getInputDOMNode().value;
     StoryActionCreators.createStory(title, body);
   },
 
-  render: function() {
+  render() {
     return (
       <Col xs={12}>
        <form className='form-horizontal' onSubmit={this._onSubmit}>

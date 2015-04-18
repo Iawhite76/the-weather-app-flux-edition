@@ -1,10 +1,10 @@
-const ServerActionCreators = require('../actions/ServerActionCreators.react.jsx');
-const SmallConstants = require('../constants/SmallConstants.js');
-const request = require('superagent');
+const ServerActionCreators = require('../actions/ServerActionCreators.react.jsx'),
+      SmallConstants = require('../constants/SmallConstants.js'),
+      request = require('superagent');
 
 function _getErrors(res) {
-  let errorMsgs = ["Something went wrong, please try again"];
-  let json = JSON.parse(res.text);
+  let errorMsgs = ["Something went wrong, please try again"],
+      json = JSON.parse(res.text);
   if ((json)) {
     if (json['errors']) {
       errorMsgs = json['errors'];
@@ -19,7 +19,7 @@ const APIEndpoints = SmallConstants.APIEndpoints;
 
 module.exports = {
 
-  signup: function(email, username, password, passwordConfirmation) {
+  signup(email, username, password, passwordConfirmation) {
     request.post(APIEndpoints.REGISTRATION)
       .send({ user: {
         email: email,
@@ -41,7 +41,7 @@ module.exports = {
       });
   },
 
-  login: function(email, password) {
+  login(email, password) {
     request.post(APIEndpoints.LOGIN)
       .send({ username: email, password: password, grant_type: 'password' })
       .set('Accept', 'application/json')
@@ -58,7 +58,7 @@ module.exports = {
       });
   },
 
-  loadStories: function() {
+  loadStories() {
     request.get(APIEndpoints.STORIES)
       .set('Accept', 'application/json')
       .set('Authorization', sessionStorage.getItem('accessToken'))
@@ -70,7 +70,7 @@ module.exports = {
       });
   },
 
-  loadStory: function(storyId) {
+  loadStory(storyId) {
     request.get(APIEndpoints.STORIES + '/' + storyId)
       .set('Accept', 'application/json')
       .set('Authorization', sessionStorage.getItem('accessToken'))
@@ -82,7 +82,7 @@ module.exports = {
       });
   },
 
-  createStory: function(title, body) {
+  createStory(title, body) {
     request.post(APIEndpoints.STORIES)
       .set('Accept', 'application/json')
       .set('Authorization', sessionStorage.getItem('accessToken'))

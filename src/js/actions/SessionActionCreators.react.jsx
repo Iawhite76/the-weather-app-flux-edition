@@ -4,11 +4,11 @@ const SmallAppDispatcher = require('../dispatcher/SmallAppDispatcher.js'),
       RouteActionCreators = require('./RouteActionCreators.react.jsx');
 
 
-var ActionTypes = SmallConstants.ActionTypes;
+let ActionTypes = SmallConstants.ActionTypes;
 
 module.exports = {
 
-  signup: function(email, password, passwordConfirmation) {
+  signup(email, password, passwordConfirmation) {
     SmallAppDispatcher.handleViewAction({
       type: ActionTypes.SIGNUP_REQUEST,
       email: email,
@@ -18,7 +18,7 @@ module.exports = {
     WebAPIUtils.signup(email, password, passwordConfirmation);
   },
 
-  login: function(email, password) {
+  login(email, password) {
     SmallAppDispatcher.handleViewAction({
       type: ActionTypes.LOGIN_REQUEST,
       email: email,
@@ -27,7 +27,7 @@ module.exports = {
     WebAPIUtils.login(email, password);
   },
 
-  logout: function() {
+  logout() {
     SmallAppDispatcher.handleViewAction({
       type: ActionTypes.LOGOUT
     });
