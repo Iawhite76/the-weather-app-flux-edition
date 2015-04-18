@@ -1,21 +1,21 @@
-var SmallConstants = require('../constants/SmallConstants.js');
-var Dispatcher = require('flux').Dispatcher;
-var assign = require('object-assign');
+const SmallConstants = require('../constants/SmallConstants.js'),
+      Dispatcher = require('flux').Dispatcher,
+      assign = require('object-assign');
 
-var PayloadSources = SmallConstants.PayloadSources;
+let PayloadSources = SmallConstants.PayloadSources;
 
-var SmallAppDispatcher = assign(new Dispatcher(), {
+ley SmallAppDispatcher = assign(new Dispatcher(), {
 
-  handleServerAction: function(action) {
-    var payload = {
+  handleServerAction(action) {
+    let payload = {
       source: PayloadSources.SERVER_ACTION,
       action: action
     };
     this.dispatch(payload);
   },
 
-  handleViewAction: function(action) {
-    var payload = {
+  handleViewAction(action) {
+    let payload = {
       source: PayloadSources.VIEW_ACTION,
       action: action
     };
