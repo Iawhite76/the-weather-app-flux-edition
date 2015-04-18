@@ -1,39 +1,39 @@
-var React = require('react');
-var WebAPIUtils = require('../../utils/WebAPIUtils.js');
-var StoryStore = require('../../stores/StoryStore.react.jsx');
-var ErrorNotice = require('../../components/common/ErrorNotice.react.jsx');
-var StoryActionCreators = require('../../actions/StoryActionCreators.react.jsx');
-var Router = require('react-router');
-var Link = Router.Link;
-var timeago = require('timeago');
+const React = require('react'),
+      WebAPIUtils = require('../../utils/WebAPIUtils.js'),
+      StoryStore = require('../../stores/StoryStore.react.jsx'),
+      ErrorNotice = require('../../components/common/ErrorNotice.react.jsx'),
+      StoryActionCreators = require('../../actions/StoryActionCreators.react.jsx'),
+      Router = require('react-router'),
+      Link = Router.Link,
+      timeago = require('timeago');
 
-var StoriesPage = React.createClass({
+let StoriesPage = React.createClass({
 
-  getInitialState: function() {
+  getInitialState() {
     return {
       stories: StoryStore.getAllStories(),
       errors: []
     };
   },
 
-  componentDidMount: function() {
+  componentDidMount() {
     StoryStore.addChangeListener(this._onChange);
     StoryActionCreators.loadStories();
   },
 
-  componentWillUnmount: function() {
+  componentWillUnmount() {
     StoryStore.removeChangeListener(this._onChange);
   },
 
-  _onChange: function() {
+  _onChange() {
     this.setState({
       stories: StoryStore.getAllStories(),
       errors: StoryStore.getErrors()
     });
   },
 
-  render: function() {
-    var errors = (this.state.errors.length > 0) ? <ErrorNotice errors={this.state.errors}/> : <div></div>;
+  render() {
+    let errors = (this.state.errors.length > 0) ? <ErrorNotice errors={this.state.errors}/> : <div></div>;
     return (
       <div>
         {errors}
@@ -45,8 +45,8 @@ var StoriesPage = React.createClass({
   }
 });
 
-var StoryItem = React.createClass({
-  render: function() {
+let StoryItem = React.createClass({
+  render() {
     return (
       <li className="story">
         <div className="story__title">
@@ -62,8 +62,8 @@ var StoryItem = React.createClass({
   }
 });
 
-var StoriesList = React.createClass({
-  render: function() {
+let StoriesList = React.createClass({
+  render() {
     return (
       <ul className="large-8 medium-10 small-12 small-centered columns">
         {this.props.stories.map(function(story, index){
