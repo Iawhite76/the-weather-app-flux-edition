@@ -1,40 +1,40 @@
-var SmallAppDispatcher = require('../dispatcher/SmallAppDispatcher.js');
-var SmallConstants = require('../constants/SmallConstants.js');
-var SessionStore = require('../stores/SessionStore.react.jsx');
-var StoryStore = require('../stores/StoryStore.react.jsx');
-var EventEmitter = require('events').EventEmitter;
-var assign = require('object-assign');
+const SmallAppDispatcher = require('../dispatcher/SmallAppDispatcher.js'),
+      SmallConstants = require('../constants/SmallConstants.js'),
+      SessionStore = require('../stores/SessionStore.react.jsx'),
+      StoryStore = require('../stores/StoryStore.react.jsx'),
+      EventEmitter = require('events').EventEmitter,
+      assign = require('object-assign');
 
-var Router = require('react-router');
-var routes = require('../router.jsx');
+const Router = require('react-router'),
+      routes = require('../router.jsx');
 
-var router = Router.create({
+let router = Router.create({
   routes: routes,
   location: null // Router.HistoryLocation
 });
 
-var ActionTypes = SmallConstants.ActionTypes;
-var CHANGE_EVENT = 'change';
+let ActionTypes = SmallConstants.ActionTypes,
+    CHANGE_EVENT = 'change';
 
-var RouteStore = assign({}, EventEmitter.prototype, {
+let RouteStore = assign({}, EventEmitter.prototype, {
 
-  emitChange: function() {
+  emitChange() {
     this.emit(CHANGE_EVENT);
   },
 
-  addChangeListener: function(callback) {
+  addChangeListener(callback) {
     this.on(CHANGE_EVENT, callback);
   },
 
-  removeChangeListener: function() {
+  removeChangeListener() {
     this.removeListener(CHANGE_EVENT, callback);
   },
 
-  getRouter: function() {
+  getRouter() {
     return router;
   },
 
-  redirectHome: function() {
+  redirectHome() {
     router.transitionTo('app');
   }
 });
@@ -45,7 +45,7 @@ RouteStore.dispatchToken = SmallAppDispatcher.register(function(payload) {
     StoryStore.dispatchToken
   ]);
 
-  var action = payload.action;
+  let action = payload.action;
 
   switch(action.type) {
 
@@ -56,8 +56,6 @@ RouteStore.dispatchToken = SmallAppDispatcher.register(function(payload) {
     case ActionTypes.LOGIN_RESPONSE:
       if (SessionStore.isLoggedIn()) {
         router.transitionTo('app');
-        // Dirty hack, need to figure this out
-        $(document).foundation();
       }
       break;
 
