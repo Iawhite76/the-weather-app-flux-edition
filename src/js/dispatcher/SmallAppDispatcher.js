@@ -4,7 +4,7 @@ const SmallConstants = require('../constants/SmallConstants.js'),
 
 let PayloadSources = SmallConstants.PayloadSources;
 
-ley SmallAppDispatcher = assign(new Dispatcher(), {
+let SmallAppDispatcher = assign(new Dispatcher(), {
 
   handleServerAction(action) {
     let payload = {
