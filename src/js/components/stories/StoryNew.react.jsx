@@ -5,10 +5,11 @@ const React = require('react'),
       SessionStore = require('../../stores/SessionStore.react.jsx'),
       StoryActionCreators = require('../../actions/StoryActionCreators.react.jsx'),
       RouteActionCreators = require('../../actions/RouteActionCreators.react.jsx'),
-      Row = require('react-bootstrap').Row,
-      Col = require('react-bootstrap').Col,
-      Input = require('react-bootstrap').Input,
-      Button = require('react-bootstrap').Button;
+      Rbs = require('react-bootstrap'),
+      Row = Rbs.Row,
+      Col = Rbs.Col,
+      Input = Rbs.Input,
+      Button = Rbs.Button;
 
 let StoryNew = React.createClass({
 

@@ -1,6 +1,8 @@
-var SmallAppDispatcher = require('../dispatcher/SmallAppDispatcher.js');
-var SmallConstants = require('../constants/SmallConstants.js');
-var WebAPIUtils = require('../utils/WebAPIUtils.js');
+const SmallAppDispatcher = require('../dispatcher/SmallAppDispatcher.js'),
+      SmallConstants = require('../constants/SmallConstants.js'),
+      WebAPIUtils = require('../utils/WebAPIUtils.js'),
+      RouteActionCreators = require('./RouteActionCreators.react.jsx');
+
 
 var ActionTypes = SmallConstants.ActionTypes;
 
@@ -29,6 +31,7 @@ module.exports = {
     SmallAppDispatcher.handleViewAction({
       type: ActionTypes.LOGOUT
     });
+    RouteActionCreators.redirect('app');
   }
 
 };
