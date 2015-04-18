@@ -1,14 +1,14 @@
-var React = require('react');
-var Router = require('react-router');
-var Route = Router.Route;
-var DefaultRoute = Router.DefaultRoute;
+const React = require('react'),
+			Router = require('react-router'),
+			Route = Router.Route,
+			DefaultRoute = Router.DefaultRoute,
 
-var SmallApp = require('./components/SmallApp.react.jsx');
-var LoginPage = require('./components/session/LoginPage.react.jsx');
-var StoriesPage = require('./components/stories/StoriesPage.react.jsx');
-var StoryPage = require('./components/stories/StoryPage.react.jsx');
-var StoryNew = require('./components/stories/StoryNew.react.jsx');
-var SignupPage = require('./components/session/SignupPage.react.jsx');
+			SmallApp = require('./components/SmallApp.react.jsx'),
+			LoginPage = require('./components/session/LoginPage.react.jsx'),
+			StoriesPage = require('./components/stories/StoriesPage.react.jsx'),
+			StoryPage = require('./components/stories/StoryPage.react.jsx'),
+			StoryNew = require('./components/stories/StoryNew.react.jsx'),
+			SignupPage = require('./components/session/SignupPage.react.jsx');
 
 module.exports = (
   <Route name="app" path="/" handler={SmallApp}>
