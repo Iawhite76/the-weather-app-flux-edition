@@ -49,11 +49,11 @@ var SignupPage = React.createClass({
         <Row>
           <Col xs={10} xsOffset={1} sm={6} smOffset={3}>
             <form className='form-horizontal' onSubmit={this._onSubmit}>
-              <Input type='email' placeholder="Email" name="email" ref="email" />
-              <Input type='text' placeholder="Username" name="username" ref="username" />
-              <Input type='password' placeholder="Password" name="password" ref="password" />
-              <Input type='password' placeholder="Re-type Password" name="password-confirmation" ref="passwordConfirmation" />
-              <Button type='submit'>Signup</Button>
+              <Input type='email' placeholder="Email" name="email" ref="email" required />
+              <Input type='text' placeholder="Username" name="username" ref="username" required />
+              <Input type='password' placeholder="Password" name="password" ref="password" required />
+              <Input type='password' placeholder="Re-type Password" name="password-confirmation" ref="passwordConfirmation" required />
+              <Button bsStyle='success' type='submit'>Signup</Button>
             </form>
           </Col>
         </Row>
