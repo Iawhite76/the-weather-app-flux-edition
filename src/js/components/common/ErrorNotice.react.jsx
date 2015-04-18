@@ -1,15 +1,18 @@
-var React = require('react');
+const React = require('react'),
+      Rbs = require('react-bootstrap'),
+      Alert = Rbs.Alert;
 
-var ErrorNotice = React.createClass({
-  render: function() {
+
+let ErrorNotice = React.createClass({
+  render() {
     return (
-      <div className="error-notice">
+      <Alert bsStyle='danger'>
         <ul>
           {this.props.errors.map(function(error, index){
             return <li className="error-notice__error" key={"error-"+index}>{error}</li>;
           })}
         </ul>
-      </div>
+      </Alert>
       );
   }
 });

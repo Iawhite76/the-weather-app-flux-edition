@@ -1,7 +1,12 @@
-var React = require('react');
-var SessionActionCreators = require('../../actions/SessionActionCreators.react.jsx');
-var SessionStore = require('../../stores/SessionStore.react.jsx');
-var ErrorNotice = require('../../components/common/ErrorNotice.react.jsx');
+const  React = require('react'),
+       SessionActionCreators = require('../../actions/SessionActionCreators.react.jsx'),
+       SessionStore = require('../../stores/SessionStore.react.jsx'),
+       ErrorNotice = require('../../components/common/ErrorNotice.react.jsx'),
+       Rbs = require('react-bootstrap'),
+       Row = Rbs.Row,
+       Col = Rbs.Col,
+       Input = Rbs.Input,
+       Button = Rbs.Button;
 
 var SignupPage = React.createClass({
 
@@ -24,10 +29,10 @@ var SignupPage = React.createClass({
   _onSubmit: function(e) {
     e.preventDefault();
     this.setState({ errors: [] });
-    var email = this.refs.email.getDOMNode().value;
-    var username = this.refs.username.getDOMNode().value;
-    var password = this.refs.password.getDOMNode().value;
-    var passwordConfirmation = this.refs.passwordConfirmation.getDOMNode().value;
+    var email = this.refs.email.getInputDOMNode().value;
+    var username = this.refs.username.getInputDOMNode().value;
+    var password = this.refs.password.getInputDOMNode().value;
+    var passwordConfirmation = this.refs.passwordConfirmation.getInputDOMNode().value;
     if (password !== passwordConfirmation) {
       this.setState({ errors: ['Password and password confirmation should match']});
     } else {
@@ -40,29 +45,19 @@ var SignupPage = React.createClass({
     return (
       <div>
         {errors}
-        <div className="row">
-          <div className="card card--login small-10 medium-6 large-4 columns small-centered">
-            <form onSubmit={this._onSubmit}>
-              <div className="card--login__field">
-                <label name="email">Email</label>
-                <input type="text" name="email" ref="email" />
-              </div>
-              <div className="card--login__field">
-                <label name="username">Username</label>
-                <input type="text" name="username" ref="username" />
-              </div>
-              <div className="card--login__field">
-                <label name="password">Password</label>
-                <input type="password" name="password" ref="password" />
-              </div>
-              <div className="card--login__field">
-                <label name="password-confrimation">Password confirmation</label>
-                <input type="password" name="password-confirmation" ref="passwordConfirmation" />
-              </div>
-              <button type="submit" className="card--login__submit">Signup</button>
+
+        <Row>
+          <Col xs={10} xsOffset={1} sm={6} smOffset={3}>
+            <form className='form-horizontal' onSubmit={this._onSubmit}>
+              <Input type='email' placeholder="Email" name="email" ref="email" />
+              <Input type='text' placeholder="Username" name="username" ref="username" />
+              <Input type='password' placeholder="Password" name="password" ref="password" />
+              <Input type='password' placeholder="Re-type Password" name="password-confirmation" ref="passwordConfirmation" />
+              <Button type='submit'>Signup</Button>
             </form>
-          </div>
-        </div>
+          </Col>
+        </Row>
+
       </div>
     );
   }
