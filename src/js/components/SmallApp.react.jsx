@@ -2,7 +2,11 @@ const React = require('react'),
       RouteHandler = require('react-router').RouteHandler,
       Header = require('../components/Header.react.jsx'),
       SessionStore = require('../stores/SessionStore.react.jsx'),
-      RouteStore = require('../stores/RouteStore.react.jsx');
+      RouteStore = require('../stores/RouteStore.react.jsx'),
+      Rbs = require('react-bootstrap'),
+      Col = Rbs.Col,
+      Button = Rbs.Button,
+      Jumbotron = Rbs.Jumbotron;
 
 function getStateFromStores() {
   return {
@@ -35,7 +39,16 @@ var SmallApp = React.createClass({
         <Header
           isLoggedIn={this.state.isLoggedIn}
           email={this.state.email} />
-        <RouteHandler/>
+        <Col xs={12} sm={4}>  
+          <RouteHandler/>
+        </Col>
+        <Col xs={12} sm={8}>
+          <Jumbotron>
+            <h1>Hello, world!</h1>
+            <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+            <p><Button bsStyle='primary'>Learn more</Button></p>
+          </Jumbotron>
+        </Col>
       </div>
     );
   }

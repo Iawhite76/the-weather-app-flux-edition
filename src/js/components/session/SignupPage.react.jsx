@@ -47,7 +47,7 @@ let SignupPage = React.createClass({
         {errors}
 
         <Row>
-          <Col xs={10} xsOffset={1} sm={6} smOffset={3}>
+          <Col xs={12}>
             <form className='form-horizontal' onSubmit={this._onSubmit}>
               <Input type='email' placeholder="Email" name="email" ref="email" required />
               <Input type='text' placeholder="Username" name="username" ref="username" required />
