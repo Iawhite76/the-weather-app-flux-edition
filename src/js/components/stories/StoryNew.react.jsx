@@ -15,6 +15,7 @@ let StoryNew = React.createClass({
 
   componentDidMount: function() {
     if (!SessionStore.isLoggedIn()) {
+      alert('you must sign in first');
       RouteActionCreators.redirect('app');
     }
   },
