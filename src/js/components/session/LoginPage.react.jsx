@@ -42,8 +42,8 @@ let LoginPage = React.createClass({
         <Row>
           <Col xs={10} xsOffset={1} sm={6} smOffset={3}>
             <form className='form-horizontal' onSubmit={this._onSubmit}>
-              <Input type='email' placeholder="Email" name="email" ref="email" />
-              <Input type='password' placeholder="Password" name="password" ref="password" />
+              <Input type='email' placeholder="Email" name="email" ref="email" required />
+              <Input type='password' placeholder="Password" name="password" ref="password" required />
               <Button bsStyle='success' type='submit'>Login</Button>
             </form>
           </Col>
