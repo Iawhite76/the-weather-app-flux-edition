@@ -24,17 +24,17 @@ let Header = React.createClass({
   render() {
 
     let rightNav = this.props.isLoggedIn ? (
-      <Nav>
+      <Nav eventKey={0}>
 
         <DropdownButton eventKey={1} title={this.props.email}>
           <MenuItem eventKey='1' href='#' onClick={this.logout}>Logout</MenuItem>
         </DropdownButton>
 
-        <NavItem eventKey='2' href='#/story/new'>New Story</NavItem>
+        <NavItem eventKey={2} href='#/story/new'>New Story</NavItem>
 
       </Nav>
     ) : (
-      <Nav>
+      <Nav eventKey={0}>
 
         <NavItem eventKey={1} href='#/login'>Login</NavItem>
         <NavItem eventKey={2} href='#/signup'>Sign up</NavItem>
@@ -44,7 +44,7 @@ let Header = React.createClass({
 
     return (
       
-      <Navbar brand='The Weather App'>
+      <Navbar brand='The Weather App' inverse toggleNavKey={0}>
         {rightNav}
       </Navbar>
      
